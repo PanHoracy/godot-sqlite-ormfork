@@ -14,6 +14,12 @@ options: list = [
         help="Enable SQLite's Built-in Mathematical SQL Functions",
         define="SQLITE_ENABLE_MATH_FUNCTIONS",
     ),
+    CompileTimeOption(
+        key="enable_update_delete_limit",
+        name="UPDATE_DELETE_LIMIT",
+        help="Enable ORDER BY and LIMIT clause in UPDATE and DELETE",
+        define="SQLITE_ENABLE_UPDATE_DELETE_LIMIT",
+    ),
 ]
 
 target_path = ARGUMENTS.pop("target_path", "demo/addons/godot-sqlite/bin/")
