@@ -51,6 +51,10 @@ target = "{}{}".format(
 env.Append(CPPPATH=["src/"])
 sources = [Glob("src/*.cpp"), Glob("src/vfs/*.cpp"), "src/sqlite/sqlite3.c"]
 
+# Force compile-time flag for SQLite C source
+sqlite_c = File("src/sqlite/sqlite3.c")
+env.Append(CCFLAGS=['-DSQLITE_ENABLE_UPDATE_DELETE_LIMIT'])
+
 if env["target"] in ["editor", "template_debug"]:
     doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
     sources.append(doc_data)
